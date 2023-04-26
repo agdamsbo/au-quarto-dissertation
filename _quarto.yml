@@ -13,49 +13,134 @@ book:
   output-file: "author_diss"
   chapters:
     - index.qmd
-    - 01-intro.qmd
     - 02-study1.qmd
+  appendices: 
     - 03-study2.qmd
-    - references.qmd
 
 bibliography: references.bib
-csl: apa.csl
+
+crossref: 
+  lot-title: 'LIST OF TABLES'
+  lof-title: 'LIST OF FIGURES'
 
 format:
   pdf:
-    documentclass: book
-    classoption: ["oneside", "open=any"]
-    margin-left: "1in"
-    margin-right: "1in"
-    margin-top: "1in"
-    margin-bottom: "1in" 
-    linestretch: 2
+    biblio-title: References
+    toc-title: TABLE OF CONTENTS
+    cite-method: biblatex
+    biblatexoptions:
+      - style=apa
+    documentclass: report 
+    pdf-engine: pdflatex
     template-partials: 
+      - "tex/doc-class.tex"
       - "tex/before-body.tex" 
+      - "tex/toc.tex"
       - "tex/_titlepage.tex" 
-      - "tex/toc.tex" 
-    include-in-header: 
-      - text: | 
-          \usepackage{indentfirst}
-          \setlength{\parindent}{1cm}
-          \usepackage{fvextra}
-          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
-          \usepackage{setspace}
-          \doublespacing
-          \pagenumbering{gobble} 
-          \usepackage{sectsty}
-          \usepackage{titlesec}
-          \titleformat{\chapter}[display]
-          {\normalfont\bfseries\centering}{}{0pt}{\fontsize{12}{15}\selectfont}
-          \titlespacing*{\chapter}{0pt}{0ex plus 1ex minus .2ex}{4.3ex plus .2ex}
-          \titlespacing*{\section}{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
-          \titlespacing*{\subsection}{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
-          \sectionfont{\fontsize{12}{15}\selectfont\centering}
-          \subsectionfont{\fontsize{12}{15}\selectfont\centering}
-          
+      - "tex/_acknowledgments.tex"
+      - "tex/_copyright.tex"
+      - "tex/_dedication.tex"
     toc: true
     toc-depth: 3
     lot: true
     lof: true
     number-sections: TRUE
+    format-resources:
+      - tex/sfchap.sty
+      - tex/sfsection.sty
+    include-in-header:
+      - text: | 
+          \usepackage{textcomp}
+          \usepackage{array}
+          \usepackage{listings}
+          \usepackage{setspace}
+          \usepackage{mathptmx}
+          \usepackage{graphicx}
+          \usepackage{amssymb, amsmath}
+          \usepackage{subfig}
+          \usepackage{epsfig}
+          \usepackage{times}
+          \usepackage{float}
+          \usepackage{rotating}
+          \usepackage{makeidx}
+          \usepackage{url}
+          \usepackage{multirow}
+          \usepackage{booktabs}
+          \usepackage{tabularx}
+
+          \usepackage[subfigure, titles]{tocloft}
+          \usepackage{acronym}
+          \usepackage{datetime}
+
+
+          %%another algorithm package
+          \usepackage{algorithm}
+          \usepackage{algorithmic}
+
+          \renewcommand{\nomname}{LIST OF ABBREVIATIONS}
+          \makenomenclature
+
+          \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.PNG, .eps, .tiff}
+
+          \urlstyle{same}
+
+          \usepackage{makecell}
+          \usepackage{titletoc}
+          \usepackage{sfchap}
+          \usepackage{sfsection}
+          %\usepackage[authoryear]{natbib}
+          %\usepackage{apacite}
+          \usepackage{appendix}
+          %\usepackage{tocbibind}
+          %
+          \usepackage[nottoc]{tocbibind}
+          \setcounter{secnumdepth}{7}
+          \setcounter{tocdepth}{7}
+
+          \usepackage{hyperref}
+          \hypersetup{
+            pdftitle={A LaTeX Format for Theses and Dissertations},
+            pdfauthor={Eli Hooten},
+            bookmarksnumbered, %Determined if chapter numbers are included in the bookmark list
+            pdfstartview={FitH},
+            pdfborder={0 0 0},
+            plainpages=false
+          }%
+          \usepackage[all]{hypcap}
+
+          % Stats table label
+          \newcommand{\statslabel}[2]{\multirowcell{#1}[-1.6mm][c]{#2}}
+
+          % Below heading rule.
+          \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+          % Prevent double spaced equations
+          \newenvironment{tightequation}{\singlespace\begin{equation}}{\end{equation}}
+
+          % Extra junk to pretty up the table of contents
+          \setlength{\cftsecnumwidth}{2.8em}
+          \setlength{\cftsubsecnumwidth}{3.7em}
+          \setlength{\cftsubsubsecnumwidth}{4.6em}
+          \setlength{\cftparanumwidth}{5.5em}
+          \setlength{\cftsubparanumwidth}{6.5em}
+          \setlength{\cfttabnumwidth}{3.5em}
+          \setlength{\cftfignumwidth}{3.5em} 
+
+          %\renewcommand{\contentsname}{TABLE OF CONTENTS}
+          %\renewcommand{\listfigurename}{LIST OF FIGURES}
+          %\renewcommand{\listtablename}{LIST OF TABLES}
+          %\renewcommand{\bibname}{ \texorpdfstring{{References\vspace{10mm}}}{References}   }
+          %
+
+          \renewcommand{\chaptermark}[1]{%
+            \markboth{\MakeUppercase{%
+                \chaptername}\ \thechapter.%
+              \ #1}{}}
+              
+              
+          \interfootnotelinepenalty=10000 %prevents the splitting of long footnotes across multiple pages. Use with caution. 
+
     
+
+rendering:
+  keep-tex: true

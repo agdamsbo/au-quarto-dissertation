@@ -1,10 +1,19 @@
 # quarto-dissertation
 
-This is a Quarto extension that renders a PDF of a dissertation/thesis. It was originally designed based on the University of Pittsburgh [LaTeX template](https://etd.pitt.edu/latex-template). This template is intended to help scholars create their own reproducible dissertations/theses.
+This is a Quarto extension that renders a PDF of a dissertation/thesis that roughly follows the [Vanderbilt University Dissertation template](https://www.overleaf.com/latex/templates/vanderbilt-university-dissertation-template/fmqpcfjqtgyq). It is built upon Dr. Alberto Guzman's template for Pitt. 
 
-The extension primarily works using Quarto and a series of LaTeX partials found in the `tex` folder. Additionally, the template was created to be used for a 3-paper dissertation/thesis, although it can be easily modified to accommodate a traditional dissertation – just swap the .qmd files with your dissertation chapters.
+The extension primarily works using Quarto and a series of LaTeX partials found in the `tex` folder. To use, you will need to modify within the tex folder:
 
-Example of complete rendered PDF can be found here: [View PDF](_book/author_diss.pdf)
+- `_acknowledgements.tex`: add your acknowledgements. If you don't want this page, comment out the line `$_acknowledgements.tex()$` from `before-body.tex`. 
+- `_copyright.tex`: adjust the year. If you don't want this page, comment out the line `$_copyright.tex()$` from `before-body.tex`. 
+- `_dedication.tex`: add your dedication. If you don't want this page, comment out the line `$_copyright.tex()$` from `before-body.tex`. 
+- `_title.tex`: only change your major and committee member names
+
+The template was created to be used for a 3-paper dissertation/thesis, although it can be easily modified to accommodate a traditional dissertation – just swap the .qmd files with your dissertation chapters.
+
+Some things may not be quite up to standards; please make sure you review the [Vanderbilt graduate school guidliens for formatting dissertations](https://gradschool.vanderbilt.edu/academics/theses/Format_Guidelines_08_2021.pdf).
+
+(I'm not sure if the below will work, will test at some point).
 
 ## Installing the extension
 
@@ -24,12 +33,8 @@ quarto add alberto-guzman/quarto-dissertation
 
 ### Contributing to the template
 
-Writing my dissertation in Quarto was both exciting and challenging, given that Quarto had just been released. However, I believe Quarto is an amazing tool for creating reproducible dissertations. I plan on gradually creating documentation for this template, but I also welcome the help of contributors!
+From the original author:
 
-Happy Writing!
+> Writing my dissertation in Quarto was both exciting and challenging, given that Quarto had just been released. However, I believe Quarto is an amazing tool for creating reproducible dissertations. I plan on gradually creating documentation for this template, but I also welcome the help of contributors! Happy Writing!
 
-## Example of Rendered Title Page and TOC
-
-![Title Page](images/author_diss1024_1.png)
-![Table of Contents](images/author_diss1024_5.png)
 

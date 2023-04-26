@@ -1,32 +1,16 @@
-$if(has-frontmatter)$
-  \begin{frontmatter}
-  \begin{titlepage}
-  $_titlepage.tex()$
-  \end{titlepage}
-  \end{frontmatter}
-$else$
-  \begin{titlepage}
-  $_titlepage.tex()$
-  \end{titlepage}
-$endif$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Prevent the warning: pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+%%	This setting will make a difference to the output because the page number is suppressed for the title page
+\pagenumbering{alph}
 
-% Committee page
-\input{tex/comittee.tex}
+$_titlepage.tex()$
 
-% Copyright page
-\input{tex/copyright.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\doublespacing
+\pagenumbering{roman} \setcounter{page}{2}
 
-% Abstract page
-\input{tex/abstract.tex}
-
-% Order of TOC, LOT, and LOF
-$if(toc)$
-\tableofcontents
-$endif$
-$if(lot)$
-\listoftables
-$endif$
-$if(lof)$
-\listoffigures
-$endif$
-
+% These 3 sections are optional 
+\singlespacing
+$_copyright.tex()$
+$_dedication.tex()$
+$_acknowledgments.tex()$
