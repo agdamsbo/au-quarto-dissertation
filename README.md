@@ -1,6 +1,6 @@
 # quarto-dissertation
 
-This is a Quarto extension that renders a PDF of a dissertation/thesis that roughly follows the [Vanderbilt University Dissertation template](https://www.overleaf.com/latex/templates/vanderbilt-university-dissertation-template/fmqpcfjqtgyq). It is built upon Dr. Alberto Guzman's template for Pitt. 
+This is a Quarto extension that renders a PDF of a dissertation/thesis that roughly follows the [Vanderbilt University Dissertation template](https://www.overleaf.com/latex/templates/vanderbilt-university-dissertation-template/fmqpcfjqtgyq). I created it by building upon the work of [Dr. Alberto Guzman's template for Pitt](https://github.com/alberto-guzman/quarto-dissertation). 
 
 The extension primarily works using Quarto and a series of LaTeX partials found in the `tex` folder. To use, you will need to modify within the tex folder:
 
@@ -20,7 +20,7 @@ Some things may not be quite up to standards; please make sure you review the [V
 To use this extension, navigate to your desired directory and type the following command in your terminal:
 
 ```{bash}
-quarto use template alberto-guzman/quarto-dissertation
+quarto use template fcmeyer/vu-quarto-dissertation
 ```
 
 ## Using template on an existing directory/folder
@@ -28,7 +28,7 @@ quarto use template alberto-guzman/quarto-dissertation
 If you already have an existing Quarto project or document, you may add the template by typing the following in your terminal:
 
 ```{bash}
-quarto add alberto-guzman/quarto-dissertation
+quarto add fcmeyer/vu-quarto-dissertation
 ```
 
 ### Contributing to the template
