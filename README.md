@@ -1,4 +1,4 @@
-# quarto-dissertation
+# Vanderbilt Quarto Dissertation Template
 
 This is a Quarto extension that renders a PDF of a dissertation/thesis that roughly follows the [Vanderbilt University Dissertation template](https://www.overleaf.com/latex/templates/vanderbilt-university-dissertation-template/fmqpcfjqtgyq). I created it by building upon the work of [Dr. Alberto Guzman's template for Pitt](https://github.com/alberto-guzman/quarto-dissertation). 
 
