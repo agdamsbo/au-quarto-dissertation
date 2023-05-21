@@ -10,28 +10,57 @@ execute:
 book:
   title: "Dissertation Title" 
   author: "Author"
-  output-file: "author_diss"
   chapters:
-    - index.qmd
-    - 02-study1.qmd
-  appendices: 
-    - 03-study2.qmd
+    - index.qmd # uses include and really is pointing to chapters/01-intro.qmd
+    - chapters/02-study1.qmd
+    - chapters/03-study2.qmd
+    - chapters/04-discussion.qmd
+  # appendices: 
+  #   - appendices/01-renvironment.qmd
+  page-navigation: true
+  genre: Doctoral dissertation
 
 bibliography: references.bib
 
+csl: csl/apa.csl
+
 crossref: 
+  chapters: true
+  fig-title: Figure
+  tbl-title: Table
+  fig-prefix: Figure
+  tbl-prefix: Table
+  appendix-title: Appendix
+  ref-hyperlink: true
   lot-title: 'LIST OF TABLES'
   lof-title: 'LIST OF FIGURES'
 
 format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: right
+    number-sections: true
+    number-depth: 3
+    code-fold: true
+    theme: cosmo
+    fontsize: 0.90em
+  docx:
+    reference-doc: docx/custom-reference-doc.docx
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    number-depth: 2
+    highlight-style: github
   pdf:
     biblio-title: References
     toc-title: TABLE OF CONTENTS
     cite-method: biblatex
     biblatexoptions:
       - style=apa
+      - backend=biber
     documentclass: report 
-    pdf-engine: pdflatex
+    fontsize: 10pt
     template-partials: 
       - "tex/doc-class.tex"
       - "tex/before-body.tex" 
@@ -40,6 +69,7 @@ format:
       - "tex/_acknowledgments.tex"
       - "tex/_copyright.tex"
       - "tex/_dedication.tex"
+    mainfont: "Times" # replace w/ "Times New Roman" if using Windows, etc.
     toc: true
     toc-depth: 3
     lot: true
@@ -49,74 +79,49 @@ format:
       - tex/sfchap.sty
       - tex/sfsection.sty
     include-in-header:
-      - text: | 
-          \usepackage{textcomp}
-          \usepackage{array}
+      - text: |
+          \usepackage[intoc]{nomencl}
           \usepackage{listings}
-          \usepackage{setspace}
-          \usepackage{mathptmx}
-          \usepackage{graphicx}
-          \usepackage{amssymb, amsmath}
           \usepackage{subfig}
           \usepackage{epsfig}
-          \usepackage{times}
-          \usepackage{float}
           \usepackage{rotating}
           \usepackage{makeidx}
-          \usepackage{url}
+          
+          %% flextable dependencies
           \usepackage{multirow}
-          \usepackage{booktabs}
-          \usepackage{tabularx}
-
+          \usepackage{multicol}
+          \usepackage{colortbl}
+          \usepackage{hhline}
+          
+          \newlength\Oldarrayrulewidth
+          \newlength\Oldtabcolsep
+          
           \usepackage[subfigure, titles]{tocloft}
           \usepackage{acronym}
           \usepackage{datetime}
-
-
-          %%another algorithm package
           \usepackage{algorithm}
           \usepackage{algorithmic}
-
-          \renewcommand{\nomname}{LIST OF ABBREVIATIONS}
-          \makenomenclature
-
-          \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.PNG, .eps, .tiff}
-
-          \urlstyle{same}
-
+          \usepackage{url}
           \usepackage{makecell}
           \usepackage{titletoc}
+          \usepackage{appendix}
+          \usepackage[nottoc]{tocbibind}
           \usepackage{sfchap}
           \usepackage{sfsection}
-          %\usepackage[authoryear]{natbib}
-          %\usepackage{apacite}
-          \usepackage{appendix}
-          %\usepackage{tocbibind}
-          %
-          \usepackage[nottoc]{tocbibind}
           \setcounter{secnumdepth}{7}
           \setcounter{tocdepth}{7}
-
-          \usepackage{hyperref}
-          \hypersetup{
-            pdftitle={A LaTeX Format for Theses and Dissertations},
-            pdfauthor={Eli Hooten},
-            bookmarksnumbered, %Determined if chapter numbers are included in the bookmark list
-            pdfstartview={FitH},
-            pdfborder={0 0 0},
-            plainpages=false
-          }%
-          \usepackage[all]{hypcap}
-
+          \usepackage{setspace}
+          % \usepackage[all]{hypcap}
+          
           % Stats table label
           \newcommand{\statslabel}[2]{\multirowcell{#1}[-1.6mm][c]{#2}}
-
+          
           % Below heading rule.
           \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
-
+          
           % Prevent double spaced equations
           \newenvironment{tightequation}{\singlespace\begin{equation}}{\end{equation}}
-
+          
           % Extra junk to pretty up the table of contents
           \setlength{\cftsecnumwidth}{2.8em}
           \setlength{\cftsubsecnumwidth}{3.7em}
@@ -125,22 +130,14 @@ format:
           \setlength{\cftsubparanumwidth}{6.5em}
           \setlength{\cfttabnumwidth}{3.5em}
           \setlength{\cftfignumwidth}{3.5em} 
-
-          %\renewcommand{\contentsname}{TABLE OF CONTENTS}
-          %\renewcommand{\listfigurename}{LIST OF FIGURES}
-          %\renewcommand{\listtablename}{LIST OF TABLES}
-          %\renewcommand{\bibname}{ \texorpdfstring{{References\vspace{10mm}}}{References}   }
-          %
-
+          
           \renewcommand{\chaptermark}[1]{%
-            \markboth{\MakeUppercase{%
-                \chaptername}\ \thechapter.%
-              \ #1}{}}
-              
-              
+          \markboth{\MakeUppercase{%
+              \chaptername}\ \thechapter.%
+            \ #1}{}}
+            
+            
           \interfootnotelinepenalty=10000 %prevents the splitting of long footnotes across multiple pages. Use with caution. 
-
-    
 
 rendering:
   keep-tex: true

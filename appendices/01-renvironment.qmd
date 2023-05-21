@@ -1,0 +1,12 @@
+---
+title: Environments used for computation
+---
+
+## R environment used for data analysis and dissertation rendering
+
+Generated using `renv::diagnostics()`.
+
+```{r}
+#| echo: false
+renv::diagnostics()
+```
