@@ -31,14 +31,19 @@ If you already have an existing Quarto project or document, you may add the temp
 quarto add agdamsbo/au-quarto-dissertation
 ```
 
+## Suggested extensions to use with this template
+
+To include a list of acronyms, install [rchaput/acronyms](https://github.com/rchaput/acronyms). The author provides good instructions.
+
+
 ## To-do-list
 
 The following are the pending tasks to get the template flying
 
-- [ ] Check that everything works as desired for now after forking
+- [x] Check that everything works as desired for now after forking
 - [ ] Make sure to update all text to "Graduate School of Health, Aarhus University"
 - [ ] Use the AU logo on front
-- [ ] Find a way to include a List of Acronyms based on [rchaput/acronyms](https://github.com/rchaput/acronyms)
+- [x] Find a way to include a List of Acronyms based on [rchaput/acronyms](https://github.com/rchaput/acronyms)
 - [ ] More to come, I am sure...
 
 
