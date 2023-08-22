@@ -36,7 +36,7 @@ quarto add agdamsbo/au-quarto-dissertation
 The following are the pending tasks to get the template flying
 
 - [ ] Check that everything works as desired for now after forking
-- [ ] Make sure to update all text to "Graduate School of Health, Aarhus University"
+- [ ] Make sure to update all text to "Graduate School of Health, Aarhus University"
 - [ ] Use the AU logo on front
 - [ ] Find a way to include a List of Acronyms based on [rchaput/acronyms](https://github.com/rchaput/acronyms)
 - [ ] More to come, I am sure...
